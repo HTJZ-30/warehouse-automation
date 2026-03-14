@@ -1,0 +1,29 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+*.egg
+venv/
+
+# Runtime / generated
+logs/
+data/audit.db
+data/receipts/*.png
+data/receipts_done/
+data/receipts_failed/
+output/
+config/.secret.key
+
+# Test artifacts
+tests/_*.json
+tests/_*.txt
+tests/ocr_test_output.txt
+tests/e2e_feature2_results.json
+tests/fixtures/receipts/*_processed.png
+
+# IDE
+.vscode/
+.idea/
+*.swp

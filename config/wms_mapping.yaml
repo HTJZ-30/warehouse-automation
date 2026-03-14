@@ -1,0 +1,115 @@
+# WMS 界面坐标映射
+# 用于 pyautogui RPA 自动录入
+# 坐标需根据实际 WMS 窗口位置校准
+
+wms:
+  window_title: "仓库管理系统"         # pygetwindow 匹配窗口标题
+  startup_delay: 2.0                   # 等待窗口加载 (秒)
+
+receipt_entry:                         # 入库单录入
+  menu_path:
+    - { x: 50,  y: 100, desc: "仓库管理菜单" }
+    - { x: 120, y: 200, desc: "入库管理" }
+    - { x: 180, y: 230, desc: "新建入库单" }
+
+  fields:
+    receipt_no:
+      x: 400
+      y: 180
+      desc: "单据编号"
+      type: "text"
+    product_name:
+      x: 400
+      y: 220
+      desc: "品名"
+      type: "text"
+    quantity:
+      x: 400
+      y: 260
+      desc: "数量"
+      type: "number"
+    unit:
+      x: 400
+      y: 300
+      desc: "单位"
+      type: "text"
+    date:
+      x: 400
+      y: 340
+      desc: "日期"
+      type: "date"
+      format: "YYYY-MM-DD"
+    warehouse:
+      x: 400
+      y: 380
+      desc: "入库仓"
+      type: "dropdown"
+    supplier:
+      x: 400
+      y: 420
+      desc: "供应商"
+      type: "text"
+    remark:
+      x: 400
+      y: 460
+      desc: "备注"
+      type: "text"
+
+  buttons:
+    save:
+      x: 300
+      y: 520
+      desc: "保存按钮"
+    confirm:
+      x: 450
+      y: 520
+      desc: "确认按钮"
+
+shipment_entry:                        # 出库单录入
+  menu_path:
+    - { x: 50,  y: 100, desc: "仓库管理菜单" }
+    - { x: 120, y: 200, desc: "出库管理" }
+    - { x: 180, y: 260, desc: "新建出库单" }
+
+  fields:
+    shipment_no:
+      x: 400
+      y: 180
+      desc: "出库单号"
+      type: "text"
+    product_name:
+      x: 400
+      y: 220
+      desc: "品名"
+      type: "text"
+    quantity:
+      x: 400
+      y: 260
+      desc: "数量"
+      type: "number"
+    destination:
+      x: 400
+      y: 300
+      desc: "目的地/客户"
+      type: "text"
+    date:
+      x: 400
+      y: 340
+      desc: "日期"
+      type: "date"
+      format: "YYYY-MM-DD"
+
+  buttons:
+    save:
+      x: 300
+      y: 420
+      desc: "保存按钮"
+    confirm:
+      x: 450
+      y: 420
+      desc: "确认按钮"
+
+verification:
+  screenshot_after_save: true
+  screenshot_dir: "output/screenshots/"
+  verify_delay: 1.5                    # 保存后等待验证 (秒)

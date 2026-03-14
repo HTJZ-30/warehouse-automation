@@ -1,0 +1,47 @@
+# warehouse-automation global settings
+
+app:
+  name: "仓库自动化系统"
+  version: "1.0.0"
+  log_level: "INFO"
+  log_dir: "logs/"
+
+feature1:
+  schedule_cron: "0 2 * * *"          # 每天凌晨2点
+  data_source_type: "excel"            # excel | sql
+  excel_path: "data/inventory.xlsx"
+  excel_sheet: "库存"
+  sql:
+    driver: "ODBC Driver 17 for SQL Server"
+    server: "localhost"
+    database: "warehouse"
+    table: "inventory"
+    # username/password in suppliers.yaml (encrypted)
+  report_output_dir: "output/reports/"
+  max_concurrent_scrapers: 3
+
+feature2:
+  watch_folder: "data/receipts/"
+  processed_folder: "data/receipts_done/"
+  failed_folder: "data/receipts_failed/"
+  ocr_lang: "ch"                       # PaddleOCR: ch covers Chinese + English
+  confidence_auto_pass: 0.90
+  confidence_review: 0.70
+  rpa_delay_between_fields: 0.3        # seconds
+
+email:
+  smtp_server: "smtp.example.com"
+  smtp_port: 587
+  use_tls: true
+  sender: "warehouse-bot@example.com"
+  # password in suppliers.yaml (encrypted)
+  recipients:
+    - "manager@example.com"
+
+webhook:
+  enabled: false
+  type: "dingtalk"                     # dingtalk | wecom
+  url: ""                              # set via encrypted config
+
+audit:
+  db_path: "data/audit.db"

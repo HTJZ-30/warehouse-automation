@@ -1,0 +1,30 @@
+# SKU 阈值映射表
+# 格式: SKU编号 -> 安全库存 / 预警库存 / 补货建议量
+
+defaults:
+  safety_stock: 100
+  warning_threshold: 150
+  reorder_quantity: 500
+
+overrides:
+  SKU-001:
+    name: "螺丝 M6x20"
+    safety_stock: 200
+    warning_threshold: 300
+    reorder_quantity: 1000
+  SKU-002:
+    name: "轴承 6205"
+    safety_stock: 50
+    warning_threshold: 80
+    reorder_quantity: 200
+  SKU-003:
+    name: "密封圈 OR-25"
+    safety_stock: 500
+    warning_threshold: 700
+    reorder_quantity: 2000
+
+# 趋势预警: 连续 N 天库存下降则提前预警
+trend_alert:
+  enabled: true
+  lookback_days: 7
+  decline_threshold: 0.15             # 下降超过 15% 触发

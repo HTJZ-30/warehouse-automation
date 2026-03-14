@@ -1,0 +1,33 @@
+# warehouse-automation 依赖
+# 共享 + Feature 1
+openpyxl>=3.1.0
+pandas>=2.0.0
+pyodbc>=5.0.0
+pyyaml>=6.0
+pydantic>=2.0.0
+cryptography>=41.0.0
+requests>=2.31.0
+
+# 浏览器自动化 (Feature 1)
+playwright>=1.40.0
+
+# 文件夹监控 (Feature 2)
+watchdog>=3.0.0
+
+# 图像处理 (Feature 2)
+Pillow>=10.0.0
+opencv-python>=4.8.0
+pillow-heif>=0.13.0
+
+# OCR (Feature 2)
+paddlepaddle>=2.5.0
+paddleocr>=2.7.0
+
+# RPA + 字段解析 (Feature 2)
+pyautogui>=0.9.54
+pygetwindow>=0.0.9
+rapidfuzz>=3.0.0
+
+# 测试
+pytest>=7.4.0
+pytest-cov>=4.1.0

@@ -1,0 +1,46 @@
+# 供应商凭据配置
+# 注意: password / api_key 等敏感字段使用 Fernet 加密后存放
+# 使用 shared/crypto.py 的 encrypt_value() 生成加密值
+
+suppliers:
+  supplier_01:
+    name: "东莞精密五金"
+    url: "https://supplier1.example.com"
+    login_url: "https://supplier1.example.com/login"
+    username: "buyer01"
+    password_encrypted: ""             # 运行 crypto.py --encrypt 生成
+    scraper_class: "Supplier01Scraper"
+    price_page: "/products/price-list"
+    selectors:
+      username_input: "#username"
+      password_input: "#password"
+      login_button: "#btn-login"
+      price_table: "table.price-list"
+      price_cell: "td.price"
+      delivery_cell: "td.delivery-days"
+
+  supplier_02:
+    name: "上海标准件"
+    url: "https://supplier2.example.com"
+    login_url: "https://supplier2.example.com/auth"
+    username: "purchase_dept"
+    password_encrypted: ""
+    scraper_class: "Supplier02Scraper"
+    price_page: "/quotation"
+    selectors:
+      username_input: "input[name='user']"
+      password_input: "input[name='pass']"
+      login_button: "button[type='submit']"
+      price_table: "#quote-table"
+      price_cell: ".unit-price"
+      delivery_cell: ".lead-time"
+
+email:
+  password_encrypted: ""               # SMTP 密码加密值
+
+webhook:
+  secret_encrypted: ""                 # webhook 签名密钥
+
+sql:
+  username: "sa"
+  password_encrypted: ""               # SQL 数据库密码
