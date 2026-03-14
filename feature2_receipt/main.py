@@ -77,10 +77,10 @@ def process_receipt_image(image_path: Path, settings, wms_config, audit: AuditTr
                 _move_to_failed(image_path, settings)
                 return
 
-        # 6. RPA 录入 WMS
-        logger.info("步骤 6/6: RPA 录入 WMS")
+        # 6. 录入 Excel 台账
+        logger.info("步骤 6/6: 录入 Excel 台账")
         rpa = RPAEngine(wms_config, field_delay=settings.feature2.rpa_delay_between_fields)
-        success = rpa.entry_receipt(entry_data)
+        success = rpa.entry_receipt(entry_data, source_image=str(image_path.name))
 
         if success:
             audit.log("feature2_receipt", "rpa_entry_success", entity_id=image_path.name,
@@ -103,9 +103,9 @@ def _parsed_to_dict(parsed) -> dict:
     """将 ParsedReceipt 转为 RPA 输入 dict"""
     return {
         "receipt_no": parsed.receipt_no or "",
+        "receipt_type": parsed.receipt_type or "入库",
         "product_name": parsed.product_name or "",
         "quantity": str(parsed.quantity) if parsed.quantity else "",
-        "unit": parsed.unit or "",
         "date": parsed.date or "",
         "warehouse": parsed.warehouse or "",
         "supplier": parsed.supplier or "",

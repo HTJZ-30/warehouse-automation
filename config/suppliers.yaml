@@ -36,7 +36,7 @@ suppliers:
       delivery_cell: ".lead-time"
 
 email:
-  password_encrypted: ""               # SMTP 密码加密值
+  password_encrypted: "gAAAAABptTdTARV9HcuNSDNzdnFzwQSsgu2Xchl81e55WSaMajUzZSkuqzsiKJc7jy0hOw1wAnfrux-E9lifLS9x1dAmZF0nUSVbDA8d-gPeP6uS7ib1q7c="
 
 webhook:
   secret_encrypted: ""                 # webhook 签名密钥

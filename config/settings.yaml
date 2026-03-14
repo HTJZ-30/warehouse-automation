@@ -30,13 +30,13 @@ feature2:
   rpa_delay_between_fields: 0.3        # seconds
 
 email:
-  smtp_server: "smtp.example.com"
+  smtp_server: "smtp.qq.com"
   smtp_port: 587
   use_tls: true
-  sender: "warehouse-bot@example.com"
+  sender: "2726315154@qq.com"
   # password in suppliers.yaml (encrypted)
   recipients:
-    - "manager@example.com"
+    - "2726315154@qq.com"
 
 webhook:
   enabled: false

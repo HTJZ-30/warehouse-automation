@@ -13,7 +13,7 @@ from shared.logger import get_logger
 
 from feature1_inventory.data_source import create_data_source
 from feature1_inventory.threshold_checker import check_thresholds
-from feature1_inventory.browser_scraper import scrape_all_suppliers
+from feature1_inventory.browser_scraper import scrape_1688
 from feature1_inventory.report_generator import generate_comparison_report
 from feature1_inventory.notifier import notify
 
@@ -74,11 +74,10 @@ def run():
             len(alert_result.warning_alerts),
         )
 
-        # 4. 抓取供应商报价
-        logger.info("步骤 3/5: 抓取供应商报价")
-        quotes = asyncio.run(scrape_all_suppliers(
+        # 4. 从 1688 公开平台抓取报价
+        logger.info("步骤 3/5: 从 1688 抓取供应商报价")
+        quotes = asyncio.run(scrape_1688(
             alert_items=alert_result.all_alerts,
-            suppliers_config=suppliers,
             max_concurrent=settings.feature1.max_concurrent_scrapers,
         ))
         audit.log(

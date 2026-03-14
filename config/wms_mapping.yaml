@@ -1,6 +1,12 @@
-# WMS 界面坐标映射
-# 用于 pyautogui RPA 自动录入
-# 坐标需根据实际 WMS 窗口位置校准
+# WMS 界面配置
+# 当前使用 Excel 台账模式，数据直接写入 Excel 文件
+# 如需切换回 pyautogui 屏幕操控模式，修改 mode 为 "pyautogui"
+
+mode: "excel"                              # excel | pyautogui
+
+excel_ledger:
+  path: "data/receipt_ledger.xlsx"         # 台账文件路径
+  sheet_name: "入库台账"
 
 wms:
   window_title: "仓库管理系统"         # pygetwindow 匹配窗口标题
